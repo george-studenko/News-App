@@ -50,6 +50,12 @@ import java.util.List;
         checkInternetConnection();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkInternetConnection();
+    }
+
     private void checkInternetConnection() {
         if(!NetworkUtils.isConnected(this)){
             clearAdapter();
