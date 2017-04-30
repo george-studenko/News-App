@@ -44,4 +44,10 @@ import java.util.List;
         }
     }
 
+    private void checkInternetConnection() {
+        if(!NetworkUtils.isConnected(this)){
+            clearAdapter();
+            setErrorMessage(getString(R.string.no_internet),false);
+        }
+    }
 }
