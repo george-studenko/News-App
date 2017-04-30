@@ -36,4 +36,12 @@ import java.util.List;
             mMessageText.setText(errorMessage);
         }
     }
+
+    private void clearAdapter() {
+        if(mAdapter!=null) {
+            mAdapter.clear();
+            mAdapter.setNotifyOnChange(true);
+        }
+    }
+
 }
