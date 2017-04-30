@@ -26,6 +26,7 @@ import java.util.Scanner;
         private final static String host = "content.guardianapis.com";
         private final static String type="search";
         private final static String query="q";
+        private final static String searchTerm="recipe";
         private final static String apiKeyParam="api-key";
         private final static String testApiKey="test";
         private final static String apiKey = BuildConfig.API_KEY.length()>0 ? BuildConfig.API_KEY : "";
@@ -106,7 +107,7 @@ import java.util.Scanner;
                     && activeNetwork.isConnectedOrConnecting();
         }
 
-        public static URL buildUrl(String searchTerm){
+        public static URL buildUrl(){
             URL URL= null;
             Uri.Builder builder= new Uri.Builder();
             builder.scheme(secureScheme)
