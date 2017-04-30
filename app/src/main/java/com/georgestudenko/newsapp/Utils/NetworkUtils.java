@@ -16,8 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-import static android.R.attr.apiKey;
-
 /**
  * Created by george on 30/04/2017.
  */
@@ -31,6 +29,7 @@ import static android.R.attr.apiKey;
         private final static String searchTerm="recipe";
         private final static String apiKeyParam="api-key";
         private final static String testApiKey="test";
+        private final static String apiKey = BuildConfig.API_KEY.length()>0 ? BuildConfig.API_KEY : "";
 
         public static String getResponseFromHttpUrl(URL url, Context context) throws IOException {
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
@@ -115,7 +114,13 @@ import static android.R.attr.apiKey;
                     .authority(host)
                     .appendPath(type)
                     .appendQueryParameter(query, searchTerm);
-                    builder.appendQueryParameter(apiKeyParam, testApiKey);
+
+            if(apiKey!=""){
+                builder.appendQueryParameter(apiKeyParam, apiKey);
+            }else{
+                builder.appendQueryParameter(apiKeyParam, testApiKey);
+            }
+
             builder.build();
             try {
                 URL = new URL(builder.build().toString());
