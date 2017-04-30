@@ -9,13 +9,15 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
 import com.georgestudenko.newsapp.Data.NewsAdapter;
 import com.georgestudenko.newsapp.Data.NewsLoader;
 import com.georgestudenko.newsapp.Models.News;
 import com.georgestudenko.newsapp.Utils.NetworkUtils;
 
 import java.util.List;
+
+public class MainActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<List<News>>{
+
     private static final int LOADER_ID = 182;
     private static String errorMessage;
     private static boolean mShowError;
@@ -61,5 +63,32 @@ import java.util.List;
             clearAdapter();
             setErrorMessage(getString(R.string.no_internet),false);
         }
+    }
+
+    @Override
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+        mMessageText.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
+        return new NewsLoader(this);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<List<News>> loader, List<News> data) {
+        mMessageText.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.GONE);
+
+        if(data !=null) {
+            mAdapter = new NewsAdapter(this, data);
+            mListView.setAdapter(mAdapter);
+        }
+        if(mShowError){
+            mMessageText.setText(errorMessage);
+            mShowError=false;
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<List<News>> loader) {
+        clearAdapter();
     }
 }
