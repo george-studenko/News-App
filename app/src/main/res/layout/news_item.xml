@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/newsRow"
+    android:padding="10dp">
+
+    <TextView
+        android:textColor="@color/colorSoftBlack"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Life and Style"
+        android:id="@+id/section"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="10-Oct-2017"
+        android:id="@+id/date"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+<LinearLayout
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/section"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
+
+    <TextView
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/colorBlack"
+        android:layout_weight="18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Leek recipes croustade cheese crumble bread pudding fritters recipe swap"
+        android:id="@+id/newsTitle"/>
+
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:layout_width="18dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_navigate_next_black_18dp"
+        android:id="@+id/imageView"/>
+</LinearLayout>
+</RelativeLayout>
