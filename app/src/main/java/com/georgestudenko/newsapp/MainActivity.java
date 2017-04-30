@@ -30,6 +30,13 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mMessageText = (TextView) findViewById(R.id.messageText);
+        mListView = (ListView) findViewById(R.id.newssListView);
+        mListView.setEmptyView(mMessageText);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        getSupportLoaderManager().initLoader(LOADER_ID,null,this);
+    }
+
     public static void setErrorMessage(String errorMessageToSet, boolean showErrorOnLoadFinish) {
         errorMessage = errorMessageToSet;
         if(showErrorOnLoadFinish){
