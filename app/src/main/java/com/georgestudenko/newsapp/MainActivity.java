@@ -28,5 +28,12 @@ import java.util.List;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    public static void setErrorMessage(String errorMessageToSet, boolean showErrorOnLoadFinish) {
+        errorMessage = errorMessageToSet;
+        if(showErrorOnLoadFinish){
+            mShowError =true;
+        }else {
+            mMessageText.setText(errorMessage);
+        }
     }
 }
